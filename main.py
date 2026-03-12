@@ -363,7 +363,7 @@ def evaluate_cascade(small_model, large_model, testloader, device):
 def plot_results(all_results, dataset):
     fig, axes = plt.subplots(1, 3, figsize=(15, 5))
     
-    alphas = sorted(all_results.keys())
+    alphas = sorted([k for k in all_results.keys() if k != 'baseline'], key=lambda x: float(x))
     
     # 1. Distributional Overlap s_o
     s_o_vals = [all_results[a]['s_o'] for a in alphas]
